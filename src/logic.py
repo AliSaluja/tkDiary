@@ -7,7 +7,7 @@ import tkinter
 
 def save(filename=None, now=False):
     date = str(datetime.date.today() + datetime.timedelta(days=1)) if now == False else str(datetime.date.today())
-    filename = "./src/diary/" + date + ".json" if filename is None else "./src/diary/" + filename + ".json"
+    filename = "./src/diary/" + date + ".tkd" if filename is None else "./src/diary/" + filename + ".tkd"
     del date
 
     text = text_area.get("1.0",tkinter.END)
@@ -19,7 +19,7 @@ def save(filename=None, now=False):
 
 def load(filename=None):
     date = str(datetime.date.today())
-    filename = "./src/diary/" + date + ".json" if filename is None else "./src/diary/" + filename + ".json"
+    filename = "./src/diary/" + date + ".tkd" if filename is None else "./src/diary/" + filename + ".tkd"
     del date
 
     with open(file=filename, mode="r") as text:
@@ -32,7 +32,7 @@ def deletefile(diaryes=None):
     diaryes = diaryes[:3:-1]
 
     for diary in diaryes:
-        patch = "./src/diary/" + diary + ".json"
+        patch = "./src/diary/" + diary + ".tkd"
         os.remove(patch)
 
     del diaryes
@@ -42,7 +42,7 @@ def diaryes():
     myDiaryes.sort()
     myDiaryes = myDiaryes[::-1]
 
-    myDiaryes = "".join(myDiaryes).split(".json")
+    myDiaryes = "".join(myDiaryes).split(".tkd")
     myDiaryes = list(filter(None, myDiaryes))
 
     return myDiaryes
